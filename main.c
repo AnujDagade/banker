@@ -32,6 +32,9 @@ int safetea(int n, int m)
     int is_safe = 0;
     int proc,k;
 
+    for(int pr=0; pr<n; pr++)
+        finish[pr]=0;
+
     for (k = 0; k < 3; k++)
         work[k] = ava[k];
 
@@ -40,6 +43,7 @@ int safetea(int n, int m)
 
     while(over<n)
     {
+        i=0;
         while (i < n)
         {
             limit_crossed = 0;
@@ -51,6 +55,7 @@ int safetea(int n, int m)
                     {
                         limit_crossed = 1;
 
+
                     }
                 }
 
@@ -60,14 +65,15 @@ int safetea(int n, int m)
                     {
                         work[res] += alloc[i][res];
                         finish[i] = 1;
+
+                        break;
                     }
                 }
-                else{
-                    break;
-                }
+
             }
             i++;
         }
+        over++;
     }
 
     for(proc=0; proc<n; proc++)
@@ -185,20 +191,20 @@ int main()
 
 
     //Accept request
-    printf("Process no, Resources");
+    printf("\nProcess no, Resources: ");
     scanf("%d",&pno);
     for(int i=0; i<m; i++)
     {
         scanf("%d", &req[i]);
     }
 
-
+    //This is safety baby
     safetea(n,m)?printf("\nSafe\n"):printf("\nNot Safe\n");
 
-    printf("%d",safetea(n,m));
+    //printf("%d",safetea(n,m)); // This prints safety  return code baby baby baby OHH!
 
 
-    //res_req(pno,req,n,m);
+    res_req(pno,req,n,m);
 
     return 0;
 }
