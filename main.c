@@ -206,5 +206,12 @@ int main()
 
     res_req(pno,req,n,m);
 
+    //Look here we are printing ava matrix after your lovely request
+    printf("\nAvailable After Request\n");
+    for(i=0; i<m; i++)
+    {
+        printf(" %d", ava[i]);
+    }
+
     return 0;
 }
